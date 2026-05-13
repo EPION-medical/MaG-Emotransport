@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H-BIN Emotransport – Produktový list</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-dark: #181243;
+    --blue-mid: #7f7ebc;
+    --blue-bright: #6d8ac6;
+    --blue-light: #eef1f8;
+    --white: #ffffff;
+    --gray-light: #f4f5fb;
+    --gray-mid: #d8ddf0;
+    --text-dark: #181243;
+    --text-body: #2c2c4a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    color: var(--text-body);
+    background: var(--white);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #181243 0%, #2d2870 50%, #7f7ebc 100%);
+    color: var(--white);
+    padding: 36px 48px 32px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-text { flex: 1; position: relative; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 2px;
+    padding: 3px 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 46px;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .hero h1 span { color: #b0bddf; }
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    opacity: 0.88;
+    max-width: 420px;
+    line-height: 1.35;
+    margin-bottom: 16px;
+  }
+  .hero-tagline { font-size: 12px; opacity: 0.65; font-style: italic; }
+
+  .hero-logo {
+    position: relative;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 18px 22px 14px;
+    text-align: center;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-logo .epion-svg { width: 180px; height: auto; display: block; }
+  .hero-logo .logo-url { font-size: 10px; opacity: 0.5; display: block; letter-spacing: 0.5px; }
+
+  .intro-bar {
+    background: var(--blue-light);
+    border-left: 5px solid var(--blue-bright);
+    padding: 14px 48px;
+    font-size: 12.5px;
+    color: var(--blue-dark);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .intro-bar strong { font-weight: 600; }
+
+  .page { padding: 28px 48px; }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--blue-dark);
+    border-bottom: 3px solid var(--blue-bright);
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .tag {
+    background: var(--blue-bright);
+    color: white;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+  }
+
+  .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 28px; }
+
+  .product-card { border: 1px solid var(--gray-mid); border-radius: 6px; overflow: hidden; }
+  .card-header { background: var(--blue-dark); color: white; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
+  .card-header .model { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.5px; }
+  .card-header .cat-label { font-size: 9px; background: rgba(255,255,255,0.15); padding: 2px 7px; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; }
+  .card-body { padding: 12px 14px; background: white; }
+  .card-body .card-desc { font-size: 11.5px; color: #555; margin-bottom: 10px; line-height: 1.5; }
+
+  .feat-list { list-style: none; margin-bottom: 10px; }
+  .feat-list li { font-size: 11.5px; padding: 3px 0 3px 16px; position: relative; border-bottom: 1px solid #eef0f8; color: var(--text-body); }
+  .feat-list li:last-child { border-bottom: none; }
+  .feat-list li::before { content: '✓'; position: absolute; left: 0; color: var(--blue-bright); font-weight: 700; font-size: 11px; }
+  .feat-list li strong { font-weight: 600; color: var(--text-dark); }
+
+  .spec-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 10px; }
+  .spec-table th { background: var(--blue-dark); color: white; padding: 5px 8px; text-align: left; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.3px; }
+  .spec-table td { padding: 5px 8px; border-bottom: 1px solid var(--gray-mid); vertical-align: top; }
+  .spec-table tr:nth-child(even) td { background: var(--gray-light); }
+  .spec-table tr:last-child td { border-bottom: none; }
+  .spec-table .row-label { font-weight: 600; color: var(--blue-dark); white-space: nowrap; font-size: 10.5px; }
+
+  .highlight-box { background: var(--blue-light); border-left: 4px solid var(--blue-bright); border-radius: 0 4px 4px 0; padding: 10px 14px; margin: 10px 0; font-size: 12px; }
+  .highlight-box strong { color: var(--blue-dark); font-weight: 600; }
+
+  .compliance-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .pill { background: var(--blue-dark); color: white; font-size: 9.5px; padding: 3px 9px; border-radius: 20px; font-weight: 500; letter-spacing: 0.3px; }
+  .pill.green { background: #2e7d4f; }
+  .pill.light { background: var(--blue-mid); }
+
+  .temp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0; }
+  .temp-card { border-radius: 6px; overflow: hidden; border: 1px solid var(--gray-mid); }
+  .temp-card .temp-header { padding: 8px 12px; text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 800; color: white; }
+  .temp-card.cold .temp-header { background: #2d2870; }
+  .temp-card.room .temp-header { background: #1a7a3c; }
+  .temp-card.freeze .temp-header { background: #181243; }
+  .temp-card .temp-body { padding: 10px 12px; background: white; font-size: 11px; }
+  .temp-body .use-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 600; margin-bottom: 4px; }
+  .temp-body .use-items { font-weight: 500; color: var(--text-dark); margin-bottom: 8px; }
+
+  .divider { height: 2px; background: var(--gray-mid); margin: 24px 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .footer { background: var(--blue-dark); color: white; padding: 18px 48px; display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; }
+  .footer .contact-col h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; opacity: 0.7; }
+  .footer a { color: #b0bddf; text-decoration: none; }
+  .footer-logo-wrap { opacity: 0.85; }
+  .footer-logo-wrap img { width: 120px; height: auto; display: block; }
+  .footer .made-in { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; opacity: 0.5; letter-spacing: 1px; text-align: right; }
+
+  .info-stripe { background: var(--blue-mid); color: white; text-align: center; padding: 7px; font-size: 11px; letter-spacing: 0.5px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; }
+  .note { font-size: 11px; color: #666; font-style: italic; margin-top: 6px; }
+
+  /* ── IMAGE PLACEHOLDERS ── */
+  .product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+    background: var(--gray-light);
+    border: 2px dashed var(--gray-mid);
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  .product-img-placeholder {
+    width: 100%;
+    height: 200px;
+    background: var(--gray-light);
+    border: 2px dashed var(--blue-bright);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--blue-bright);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .product-img-placeholder .ph-icon {
+    font-size: 28px;
+    opacity: 0.5;
+  }
+  .product-img-placeholder .ph-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue-dark);
+  }
+  .product-img-placeholder .ph-hint {
+    font-size: 10px;
+    font-weight: 400;
+    color: #999;
+    font-family: 'Barlow', sans-serif;
+    font-style: italic;
+  }
+
+  @media print { body { font-size: 11px; } .hero { padding: 28px 32px; } .page { padding: 20px 32px; } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Produktový list</div>
+    <h1>H‑BIN <span>Emotransport</span></h1>
+    <div class="hero-sub">Komplexné riešenia pre bezpečnú manipuláciu a transport krvi a krvných zložiek</div>
+    <div class="hero-tagline">Vyrobené v Taliansku · Viac ako 20 rokov skúseností v zdravotníctve</div>
+  </div>
+  <div class="hero-logo">
+    <!-- Logo: umiestni súbor logo.svg do rovnakého priečinka ako tento HTML súbor -->
+    <img class="epion-svg" src="logo.svg" alt="EPION logo">
+    <span class="logo-url">www.epion.sk</span>
+  </div>
+</div>
+
+<div class="intro-bar">
+  Produktová línia <strong>H-BIN EMOTRANSPORT</strong> od spoločnosti M&amp;G INT'L bola vyvinutá na základe potrieb zdravotníckych pracovníkov a viac ako 20-ročných skúseností v odvetví. Zahŕňa komplexné riešenie pre manipuláciu a transport krvi a krvných zložiek medzi centrami na spracovanie a odber krvi, krvnými bankami a nemocničnými oddeleniami. <strong>Produkty sú vyrobené v Taliansku</strong> z vysokokvalitných materiálov, sú jednoduché na používanie a v súlade s talianskymi zákonmi a medzinárodnými normami.
+</div>
+
+<div class="info-stripe">Produktová línia: Izotermálne tašky · Stabilizátory teploty · Sekundárne obaly · Bezpečnostné vrecká</div>
+
+<div class="page">
+  <div class="section-title">
+    Kombinované izotermálne tašky – dlhé trasy
+    <span class="tag">EMO 02PP · 03PP · 04PP · 06PP</span>
+  </div>
+
+  <!-- Pic1: umiestni súbor Pic1.jpg/png do rovnakého priečinka -->
+  <img class="product-img" src="Pic1.jpg" alt="Kombinované izotermálne tašky – dlhé trasy"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+  <div class="product-img-placeholder" style="display:none;">
+    <span class="ph-icon">🖼</span>
+    <span class="ph-name">Pic1</span>
+    <span class="ph-hint">Kombinované izotermálne tašky – dlhé trasy</span>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="card-header">
+        <span class="model">EMO 02PP &amp; 03PP</span>
+        <span class="cat-label">Kompaktné</span>
+      </div>
+      <div class="card-body">
+        <div class="card-desc">Malé kombinované izotermálne tašky pre transport až 8 transfúznych vreciek. Zásobník na chladiace dosky v tele tašky.</div>
+        <table class="spec-table">
+          <tr><th>Parameter</th><th>EMO 02PP</th><th>EMO 03PP</th></tr>
+          <tr><td class="row-label">Vnút. rozmery</td><td>220×165×90 mm</td><td>220×165×160 mm</td></tr>
+          <tr><td class="row-label">Vonk. rozmery</td><td>300×260×160 mm</td><td>300×260×220 mm</td></tr>
+          <tr><td class="row-label">Hmotnosť</td><td>700 g</td><td>0,80 kg</td></tr>
+          <tr><td class="row-label">Kapacita</td><td>2× 500 ml<br>4× 250 ml</td><td>4× 500 ml<br>8× 250 ml</td></tr>
+          <tr><td class="row-label">Objem</td><td>3 litre</td><td>6 litrov</td></tr>
+          <tr><td class="row-label">Stab. teploty</td><td>2× 200 ml</td><td>1× 650 ml</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-header">
+        <span class="model">EMO 04PP &amp; 06PP</span>
+        <span class="cat-label">Väčší objem</span>
+      </div>
+      <div class="card-body">
+        <div class="card-desc">Väčšie kombinované izotermálne tašky s nastaviteľným popruhom cez rameno a voliteľným integrovaným vozíkom. Priehradka na chladiace dosky v veku.</div>
+        <table class="spec-table">
+          <tr><th>Parameter</th><th>EMO 04PP</th><th>EMO 06PP</th></tr>
+          <tr><td class="row-label">Vnút. rozmery</td><td>395×245×190 mm</td><td>500×300×250 mm</td></tr>
+          <tr><td class="row-label">Vonk. rozmery</td><td>445×320×290 mm</td><td>620×400×350 mm</td></tr>
+          <tr><td class="row-label">Hmotnosť</td><td>1,60 kg</td><td>3,2 kg</td></tr>
+          <tr><td class="row-label">Kapacita</td><td>10× 500 ml<br>25× 250 ml</td><td>22× 500 ml<br>50× 250 ml</td></tr>
+          <tr><td class="row-label">Objem</td><td>18 litrov</td><td>37,5 litrov</td></tr>
+          <tr><td class="row-label">Stab. teploty</td><td>2× 1000 ml</td><td>2× 2000 ml</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:18px;">
+    <div>
+      <strong style="font-size:12px;color:var(--blue-dark);display:block;margin-bottom:6px;">Spoločné vlastnosti</strong>
+      <ul class="feat-list">
+        <li><strong>Výdrž chladenia až 22 hodín</strong></li>
+        <li>Vonkajšia taška + vnútorný box</li>
+        <li>Uzávery s prackami a <strong>otvory pre bezpečnostné plomby / zámky</strong></li>
+        <li>Vonkajšie vrecko pre <strong>identifikačné štítky</strong></li>
+        <li>Možnosť vloženia <strong>datalogera alebo teplomera</strong> s externým displejom</li>
+        <li>Ľahké a jednoduché na manipuláciu</li>
+        <li><strong>Prispôsobenie na požiadanie</strong> (logá, nápisy, farby)</li>
+      </ul>
+    </div>
+    <div>
+      <strong style="font-size:12px;color:var(--blue-dark);display:block;margin-bottom:6px;">Zhoda s normami</strong>
+      <ul class="feat-list">
+        <li><strong>EMO 02PP, 04PP, 06PP:</strong> Zdravotnícka pomôcka triedy IIa – smernica 93/42/EHS</li>
+        <li><strong>EMO 03PP:</strong> Zdravotnícka pomôcka triedy I – nariadenie (EÚ) 2017/745</li>
+      </ul>
+      <div class="highlight-box" style="margin-top:10px;">
+        <strong>Teplotná univerzálnosť:</strong> V kombinácii so stabilizátormi teploty možno tašky používať pre transport pri <strong>+2 až +8 °C</strong> (plná krv, erytrocyty), <strong>+20 až +22 °C</strong> (PRP, trombocyty) a <strong>–30 °C</strong> (zmrazená plazma).
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">
+    Stabilizátory teploty
+    <span class="tag">–30 °C · +4 °C · +22 °C</span>
+  </div>
+
+  <!-- Pic2: umiestni súbor Pic2.jpg/png do rovnakého priečinka -->
+  <img class="product-img" src="Pic2.jpg" alt="Stabilizátory teploty"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+  <div class="product-img-placeholder" style="display:none;">
+    <span class="ph-icon">🖼</span>
+    <span class="ph-name">Pic2</span>
+    <span class="ph-hint">Stabilizátory teploty</span>
+  </div>
+
+  <div class="two-col" style="margin-bottom:16px;align-items:start;">
+    <div>
+      <p style="font-size:12px;margin-bottom:10px;">Stabilizátory teploty sú HDPE dosky naplnené <strong>materiálom s fázovou premenou (PCM)</strong>. PCM látky akumulujú a uvoľňujú energiu počas fázovej premeny – pri topení pomaly absorbujú veľké množstvo tepla z okolia, čím udržujú stálu teplotu prepravy bez rizika prehriatia alebo podchladenia.</p>
+      <div class="highlight-box">
+        <strong>Pred použitím</strong> je potrebné uchovávať stabilizátory v mrazničke alebo chladničke <strong>minimálne 12 hodín</strong>, kým vnútorný materiál úplne nestuhne.
+      </div>
+      <p class="note" style="margin-top:8px;">Vynikajúca náhrada elektrickej prenosnej chladničky aj konvenčných chladiacich blokov, ktoré nemožno umiestniť priamo do kontaktu s transfúznymi vareckami.</p>
+    </div>
+    <div>
+      <strong style="font-size:12px;color:var(--blue-dark);display:block;margin-bottom:8px;">Faktory ovplyvňujúce počet stabilizátorov:</strong>
+      <ul class="feat-list">
+        <li><strong>Množstvo prepravovaného materiálu:</strong> čím viac obsahu, tým menej stabilizátorov treba (napr. 5 vareciek → 3 ks; 10 vareciek → 2 ks). Tašky fungujú najlepšie, keď sú úplne plné.</li>
+        <li><strong>Vonkajšia teplota:</strong> pri väčšom teplotnom rozdiele medzi vonkajším a vnútorným prostredím je potrebný vyšší počet stabilizátorov.</li>
+        <li><strong>Trvanie prepravy:</strong> dlhší transport vyžaduje viac stabilizátorov.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="temp-grid">
+    <div class="temp-card cold">
+      <div class="temp-header">+4 °C</div>
+      <div class="temp-body">
+        <div class="use-label">Použitie pre</div>
+        <div class="use-items">Plná krv (WB), erytrocyty (RC)</div>
+        <table class="spec-table">
+          <tr><th>Produkt</th><th>Rozmery</th><th>Hmot.</th></tr>
+          <tr><td>TS 04C 200</td><td>165×88×21 mm</td><td>200 g</td></tr>
+          <tr><td>TS 04C 650</td><td>210×130×40 mm</td><td>720 g</td></tr>
+          <tr><td>TS 04C 1000</td><td>360×210×18 mm</td><td>1,2 kg</td></tr>
+          <tr><td>TS 04C 2000</td><td>380×215×26 mm</td><td>2,3 kg</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="temp-card room">
+      <div class="temp-header">+22 °C</div>
+      <div class="temp-body">
+        <div class="use-label">Použitie pre</div>
+        <div class="use-items">PRP, trombocyty</div>
+        <table class="spec-table">
+          <tr><th>Produkt</th><th>Rozmery</th><th>Hmot.</th></tr>
+          <tr><td>TS 22C 200</td><td>165×88×21 mm</td><td>200 g</td></tr>
+          <tr><td>TS 22C 650</td><td>210×130×40 mm</td><td>700 g</td></tr>
+          <tr><td>TS 22C 1000</td><td>360×210×18 mm</td><td>1 kg</td></tr>
+          <tr><td>TS 22C 2000</td><td>380×215×26 mm</td><td>2,2 kg</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="temp-card freeze">
+      <div class="temp-header">–30 °C</div>
+      <div class="temp-body">
+        <div class="use-label">Použitie pre</div>
+        <div class="use-items">Čerstvá zmrazená plazma (FFP)</div>
+        <table class="spec-table">
+          <tr><th>Produkt</th><th>Rozmery</th><th>Hmot.</th></tr>
+          <tr><td>TS -30C 200</td><td>165×88×21 mm</td><td>300 g</td></tr>
+          <tr><td>TS -30C 650</td><td>210×130×40 mm</td><td>1 kg</td></tr>
+          <tr><td>TS -30C 1000</td><td>360×210×18 mm</td><td>1,5 kg</td></tr>
+          <tr><td>TS -30C 2000</td><td>380×215×26 mm</td><td>2,8 kg</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">
+    Izotermálne tašky – krátke trasy
+    <span class="tag">EMO 101 · 102 · 103</span>
+  </div>
+
+  <!-- Pic3: umiestni súbor Pic3.jpg/png do rovnakého priečinka -->
+  <img class="product-img" src="Pic3.jpg" alt="Izotermálne tašky – krátke trasy"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+  <div class="product-img-placeholder" style="display:none;">
+    <span class="ph-icon">🖼</span>
+    <span class="ph-name">Pic3</span>
+    <span class="ph-hint">Izotermálne tašky – krátke trasy</span>
+  </div>
+
+  <div class="two-col" style="margin-bottom:16px;align-items:start;">
+    <div>
+      <ul class="feat-list" style="margin-bottom:10px;">
+        <li>Izolácia z <strong>hliníka a expandovaného polyetylénu</strong></li>
+        <li>Vhodné pre transport na <strong>stredné vzdialenosti (3 hodiny)</strong></li>
+        <li>Pri kombinácii so sekundárnymi obalmi EMO 01P, EMO 02S a EMO 03M <strong>transport až 12 hodín</strong></li>
+        <li>Vonkajšie vrecko na dokumenty</li>
+        <li>Priehradka vo veku pre chladiace dosky</li>
+        <li>Rukoväte na prepravu</li>
+        <li>Povinné symboly podľa zákona vytlačené na každej taške</li>
+        <li>Zhoda: <strong>Trieda I – nariadenie (EÚ) 2017/745</strong></li>
+        <li>Prispôsobenie na požiadanie (logá, nápisy, farby)</li>
+      </ul>
+    </div>
+    <div>
+      <table class="spec-table">
+        <tr><th>Parameter</th><th>EMO 101</th><th>EMO 102</th><th>EMO 103</th></tr>
+        <tr><td class="row-label">Rozmery</td><td>280×200×190 mm</td><td>330×260×190 mm</td><td>410×260×210 mm</td></tr>
+        <tr><td class="row-label">Hmotnosť</td><td>420 g</td><td>630 g</td><td>810 g</td></tr>
+        <tr><td class="row-label">Kapacita</td><td>4× 500 ml<br>10× 250 ml</td><td>8× 500 ml<br>24× 250 ml</td><td>13× 500 ml<br>40× 250 ml</td></tr>
+        <tr><td class="row-label">Objem</td><td>10 l</td><td>16 l</td><td>22 l</td></tr>
+        <tr><td class="row-label">Stab. teploty</td><td>1× 650 ml</td><td>2× 650 ml</td><td>2× 1000 ml</td></tr>
+      </table>
+      <p class="note">Stabilizátory teploty nie sú súčasťou dodávky.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">
+    Polykarbonátové obaly s izotermálnou vložkou
+    <span class="tag">EMO 01P · 02S · 03M</span>
+  </div>
+
+  <!-- Pic4: umiestni súbor Pic4.jpg/png do rovnakého priečinka -->
+  <img class="product-img" src="Pic4.jpg" alt="Polykarbonátové obaly s izotermálnou vložkou"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+  <div class="product-img-placeholder" style="display:none;">
+    <span class="ph-icon">🖼</span>
+    <span class="ph-name">Pic4</span>
+    <span class="ph-hint">Polykarbonátové obaly s izotermálnou vložkou</span>
+  </div>
+
+  <div class="two-col" style="margin-bottom:16px;align-items:start;">
+    <div>
+      <ul class="feat-list" style="margin-bottom:10px;">
+        <li>Vhodné pre transport <strong>maximálne 2 hodiny</strong></li>
+        <li>V kombinácii s taškami EMO 101/102/103 – transport <strong>až 12 hodín</strong></li>
+        <li>Vyberateľná izotermálna vložka</li>
+        <li>Vyrobené z <strong>nárazuvzdorného polykarbonátu</strong></li>
+        <li>Vzduchotesné silikónové tesnenie</li>
+        <li>Bezpečnostné háčiky z <strong>nehrdzavejúcej ocele</strong></li>
+        <li>Polykarbonátový zásobník</li>
+        <li>Možnosť vloženia datalogera / teplomera</li>
+        <li><strong>Životnosť 10 rokov</strong></li>
+        <li>Sterilizovateľné v autokláve do +121 °C (len polykarbonátový obal)</li>
+      </ul>
+      <div class="compliance-row">
+        <span class="pill">UNI EN 829/98</span>
+        <span class="pill light">Trieda I – EÚ 2017/745</span>
+        <span class="pill">A.D.R. – P650</span>
+      </div>
+    </div>
+    <div>
+      <table class="spec-table">
+        <tr><th>Parameter</th><th>EMO 01P</th><th>EMO 02S</th><th>EMO 03M</th></tr>
+        <tr><td class="row-label">Rozmery</td><td>242×169×155 mm</td><td>305×245×155 mm</td><td>390×230×173 mm</td></tr>
+        <tr><td class="row-label">Hmotnosť</td><td>750 g</td><td>1,35 kg</td><td>1,8 kg</td></tr>
+        <tr><td class="row-label">Kapacita</td><td>2× 500 ml<br>6× 250 ml</td><td>4× 500 ml<br>10× 250 ml</td><td>6× 500 ml<br>18× 250 ml</td></tr>
+        <tr><td class="row-label">Objem</td><td>5 l</td><td>10 l</td><td>15 l</td></tr>
+        <tr><td class="row-label">Izot. taška</td><td>EMO 101</td><td>EMO 102</td><td>EMO 103</td></tr>
+        <tr><td class="row-label">Stab. teploty</td><td>1× 200 ml</td><td>2× 200 ml</td><td>3× 200 ml</td></tr>
+      </table>
+      <p class="note">Izotermálna taška a stabilizátor teploty nie sú súčasťou dodávky.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">
+    Bezpečnostné vrecká z recyklovaného polyetylénu
+    <span class="tag">TE BAGS GREEN</span>
+  </div>
+
+  <div class="two-col" style="align-items:start;">
+    <div>
+      <ul class="feat-list">
+        <li>Vyrobené z <strong>recyklovaného a recyklovateľného LDPE</strong> (ak nie sú infikované)</li>
+        <li>Široká <strong>ochranná (VOID) uzatváracia páska</strong> odolná voči manipulácii</li>
+        <li>Vodotesné a vzduchotesné tesnenie</li>
+        <li>Mimoriadne odolné voči pretrhnutiu</li>
+        <li>Praktický <strong>trhací otvárací pásik</strong> – bez potreby ostrých predmetov</li>
+        <li>Čiarový kód a alfanumerický kód pre <strong>identifikáciu a sledovateľnosť</strong></li>
+        <li>Transparentný LDPE – uniknutý obsah ľahko viditeľný</li>
+        <li>Vonkajšie vrecko na dokumenty</li>
+        <li>Rukoväť (len TE 404004)</li>
+        <li>Pokyny na použitie a výstražné symboly vytlačené na vrecku</li>
+      </ul>
+      <div class="compliance-row" style="margin-top:10px;">
+        <span class="pill light">EÚ 2017/745 – Trieda I</span>
+        <span class="pill">A.D.R. – P650</span>
+        <span class="pill green">Blue Angel – Ekoznačka</span>
+      </div>
+    </div>
+    <div>
+      <strong style="font-size:12px;color:var(--blue-dark);display:block;margin-bottom:8px;">Dostupné rozmery:</strong>
+      <table class="spec-table">
+        <tr><th>Produkt</th><th>Rozmery</th></tr>
+        <tr><td>TE 404001 GREEN</td><td>195×335 mm</td></tr>
+        <tr><td>TE 404002 GREEN</td><td>225×410 mm</td></tr>
+        <tr><td>TE 404003 GREEN</td><td>300×450 mm</td></tr>
+        <tr><td>TE 404004 GREEN</td><td>485×460 mm</td></tr>
+        <tr><td>TE 404005 GREEN</td><td>250×330 mm</td></tr>
+      </table>
+      <div class="highlight-box" style="margin-top:10px;">
+        <strong>Výhody:</strong> Zníženie rizika kontaminácie · Sledovateľnosť každého vrecka · Zníženie nerecyklovateľného odpadu · Prispôsobenie na objednávku (min. množstvo)
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div style="display:flex;align-items:center;gap:22px;">
+    <!-- Logo: umiestni súbor logo.svg do rovnakého priečinka ako tento HTML súbor -->
+    <div class="footer-logo-wrap">
+      <img src="logo.svg" alt="EPION logo">
+    </div>
+    <div class="contact-col">
+      <h4>Kontakt</h4>
+      <div>EPION s.r.o. · Lomnická 42, 949 01 Nitra</div>
+      <div>Tel: <a href="tel:+421902111301">+421 902 111 301</a></div>
+      <div>E-mail: <a href="mailto:info@epion.sk">info@epion.sk</a> · <a href="https://www.epion.sk">www.epion.sk</a></div>
+    </div>
+  </div>
+  <div class="made-in">MADE IN ITALY<br><span style="font-size:10px;opacity:0.4;">H-BIN Emotransport · Produktový list SK</span></div>
+</div>
+
+</body>
+</html>
